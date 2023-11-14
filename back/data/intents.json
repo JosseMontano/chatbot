@@ -1,97 +1,73 @@
 {
   "intents": [
     {
-      "tag": "greeting",
-      "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Hay"],
-      "responses": ["Hello", "Hi", "Hi there"]
+      "tag": "saludos",
+      "patterns": ["Hola", "Hey", "hay alguien aqui?", "Hi", "Que tal?"],
+      "responses": ["Hola", "Un saludo", "que tal?"]
     },
     {
-      "tag": "goodbye",
-      "patterns": ["Bye", "See you later", "Goodbye"],
-      "responses": ["See you later", "Have a nice day", "Bye! Come back again"]
+      "tag": "adios",
+      "patterns": ["Chao", "adios", "te vere luego"],
+      "responses": ["Te veo luego", "Ten un bonito dia", "Adios"]
     },
     {
-      "tag": "thanks",
+      "tag": "Gracias",
+      "patterns": ["gracias", "muchas gracias", "eres el mejor"],
+      "responses": [
+        "Feliz por ayudar",
+        "No lo menciones!",
+        "Un places",
+        "esta bien"
+      ]
+    },
+    {
+      "tag": "sobre",
+      "patterns": ["quien eres?", "que eres?"],
+      "responses": [
+        "Soy chat SIP, tu asistente virtual",
+        "Soy CHAT SIP , un bot con IA"
+      ]
+    },
+    {
+      "tag": "nombre",
+      "patterns": ["Como te llamas?", "Cual es tu nombre?", "Como te dicen?"],
+      "responses": ["Llamame SIP", "Solo dime SIP"]
+    },
+    {
+      "tag": "ayuda",
       "patterns": [
-        "Thanks",
-        "Thank you",
-        "That's helpful",
-        "Thanks for the help"
+        "Podrias ayudarme?",
+        "Necesito tu ayuda",
+        "Puedes ayudarme?"
+      ],
+      "responses": ["Como puedo ayudarte?", "Cual es tu problema?"]
+    },
+    {
+      "tag": "comida",
+      "patterns": [
+        "Quiero pedir comida",
+        "Puedo hacer un pedido",
+        "Tengo hambre"
       ],
       "responses": [
-        "Happy to help!",
-        "Any time!",
-        "My pleasure",
-        "You're most welcome!"
+        "Que tipo de comida quieres?",
+        "Tengo varios menus para ofrecerte"
       ]
     },
     {
-      "tag": "about",
-      "patterns": ["Who are you?", "What are you?", "Who you are?"],
+      "tag": "no vegetariano",
+      "patterns": ["pollo", "cerdo", "pescado"],
       "responses": [
-        "I.m chat SIP, your bot assistant",
-        "I'm CHAT SIP , an Artificial Intelligent bot"
-      ]
-    },
-    {
-      "tag": "name",
-      "patterns": [
-        "what is your name",
-        "what should I call you",
-        "whats your name?"
-      ],
-      "responses": [
-        "You can call me baba ka dhaba.",
-        "Just call me as baba ka dhaba"
-      ]
-    },
-    {
-      "tag": "help",
-      "patterns": [
-        "Could you help me?",
-        "give me a hand please",
-        "Can you help?",
-        "What can you do for me?",
-        "I need a support",
-        "I need a help",
-        "support me please"
-      ],
-      "responses": [
-        "Tell me how can assist you",
-        "Tell me your problem to assist you",
-        "Yes Sure, How can I support you"
-      ]
-    },
-    {
-      "tag": "food",
-      "patterns": [
-        "I want to order some food",
-        "can i get something to eat",
-        "I want some food",
-        "i am hungry",
-        "need something im dying"
-      ],
-      "responses": [
-        "which type of food you want",
-        "baba ka dhaba have plenty of dishes what you want"
-      ]
-    },
-    {
-      "tag": "non veg",
-      "patterns": ["briyani", "chicken", "fish"],
-      "responses": [
-        "you have to pay before cofirm your order",
-        "want to pay COD or online to confirm your order",
-        "pay first."
+        "tenemos esta comida! ve al carrito de compras y pidelo",
+        "buena opcion, pidelo en el carrito de compras"
       ]
     },
     {
       "tag": "veg",
       "patterns": ["daal", "matter", "sabzi", "roti"],
       "responses": [
-        "you have to pay before cofirm your order",
-        "want to pay COD or online to confirm your order",
-        "pay first"
+        "tenemos esta comida! ve al carrito de compras y pidelo",
+        "buena opcion, pidelo en el carrito de compras"
       ]
     }
   ]
