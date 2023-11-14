@@ -1,10 +1,7 @@
 """ LIBRARIES FLASK """
-
 from flask import Flask, jsonify
 from controllers.chat import chat
 from flask_cors import CORS
-
-
 
 """ LIBRARIES MODEL """
 import json
@@ -37,7 +34,7 @@ for intent in data['intents']:
         training_labels.append(intent['tag'])
     responses.append(intent['responses'])
         
-    if intent['tag'] not in labels:
+    if intent['tag'] not in labels: #if there ain't th tag, just add it
         labels.append(intent['tag'])
 
 
@@ -91,7 +88,7 @@ model.compile(loss='sparse_categorical_crossentropy',
 model.summary()
 
 """ TRAINING THE MODEL """
-epochs = 500
+epochs = 1500
 history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 

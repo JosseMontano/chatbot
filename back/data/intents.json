@@ -29,8 +29,8 @@
       "tag": "about",
       "patterns": ["Who are you?", "What are you?", "Who you are?"],
       "responses": [
-        "I.m baba ka dhaba, your bot assistant",
-        "I'm baba ka dhaba, an Artificial Intelligent bot"
+        "I.m chat SIP, your bot assistant",
+        "I'm CHAT SIP , an Artificial Intelligent bot"
       ]
     },
     {
@@ -82,7 +82,7 @@
       "responses": [
         "you have to pay before cofirm your order",
         "want to pay COD or online to confirm your order",
-        "pay first"
+        "pay first."
       ]
     },
     {
