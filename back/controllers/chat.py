@@ -13,7 +13,7 @@ def chat(question, data, model, encoder, tokenizer, max_len):
     result = model.predict(keras.preprocessing.sequence.pad_sequences(tokenizer.texts_to_sequences([inp]),
                                                 truncating='post', maxlen=max_len))
     tag = encoder.inverse_transform([np.argmax(result)])
-    for i in data['intents']:
+    for i in data:
         if i['tag'] == tag:
             responseChat = np.random.choice(i['responses'])
             print("ChatBot:"  , responseChat)

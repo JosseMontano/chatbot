@@ -3,6 +3,10 @@ from flask import Flask, jsonify
 from controllers.chat import chat
 from flask_cors import CORS
 
+""" LIBRARIES DATABASE """
+from flask_sqlalchemy import SQLAlchemy
+
+
 """ LIBRARIES MODEL """
 import json
 import numpy as np
@@ -17,10 +21,54 @@ app = Flask(__name__)
 CORS(app, resources={
      "*": {"origins": ["http://localhost:5173", "exp://192.168.1.13:19000"]}})
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:8021947cbba@localhost:5632/crudChatbot'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-""" GET FILE DATA """
-with open('./data/intents.json') as file:
-    data = json.load(file)
+db = SQLAlchemy(app)
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    patterns = db.relationship('Pattern', backref='tag', lazy=True)
+    responses = db.relationship('Response', backref='tag', lazy=True)
+
+    def __repr__(self):
+        return f'<Tag {self.name}>'
+
+class Pattern(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(350), nullable=False)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Pattern {self.name}>'
+    
+class Response(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(350), nullable=False)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Pattern {self.name}>'
+
+# Create tables
+with app.app_context():
+    db.create_all()
+
+
+""" GET DATA FROM SQL """
+data = []
+
+with app.app_context():
+    tags = Tag.query.all()
+
+    for tag in tags:
+        obj = {
+            "tag": tag.name,
+            "patterns": [pattern.name for pattern in tag.patterns],
+            "responses": [response.name for response in tag.responses]
+        }
+        data.append(obj)
 
 
 """ GET THE DATA """
@@ -28,7 +76,7 @@ training_sentences = [] #TRAINING DATA
 training_labels = [] #DESTINE LABELS TO EACH TRAINING DATA
 labels = []
 responses = []
-for intent in data['intents']:
+for intent in data:
     for patterns in intent['patterns']:
         training_sentences.append(patterns)
         training_labels.append(intent['tag'])
