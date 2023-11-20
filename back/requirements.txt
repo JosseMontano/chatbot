@@ -1,0 +1,11 @@
+# Flask
+Flask
+Flask-CORS
+Flask-SQLAlchemy
+
+# Other Libraries
+tensorflow
+psycopg2
+numpy
+keras
+scikit-learn

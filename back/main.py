@@ -3,6 +3,7 @@ from flask import Flask, jsonify
 from controllers.chat import chat
 from flask_cors import CORS
 
+
 """ LIBRARIES DATABASE """
 from flask_sqlalchemy import SQLAlchemy
 
@@ -26,6 +27,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+""" CREATE THE MODELS """
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
