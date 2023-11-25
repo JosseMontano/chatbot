@@ -3,6 +3,7 @@
   import { fetchData } from "./utilities/fetch";
   import ChatbotImg from "./assets/chatBot.png";
   import ProfileImg from "./assets/profile1.jpg";
+  import Send from "./icons/send.svelte";
 
   interface MsgType {
     type: string;
@@ -69,7 +70,7 @@
           msgInput = e.target.value;
         }}
       />
-      <button id="send-button" on:click={() => addMessage()}>Enviar</button>
+      <button id="send-button" on:click={() => addMessage()}> <Send /></button>
     </div>
   </div>
 </main>
@@ -185,10 +186,15 @@
       background-color: $primary-color;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 50%;
+      height: 50px;
+     
       padding: 10px 20px;
       margin-left: 10px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     button:disabled {
       color: red;
