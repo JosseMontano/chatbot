@@ -29,11 +29,13 @@
 
 <main>
   <div class="chat-container">
+
     <div class="chat">
       {#each mensajes as msg}
         <div class={`message ${msg.type}`}>{msg.msg}</div>
       {/each}
     </div>
+
     <div class="input-container">
       <input
         type="text"
@@ -51,33 +53,31 @@
 </main>
 
 <style lang="scss">
-  $primary-color: #007bff;
-  $secondary-color: #333;
+  $primary-color: #713aff;
+  $secondary-color: #ddd;
   $border-color: #ddd;
 
-  body {
+  main {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
-    height: 100vh;
     display: flex;
     justify-content: flex-end; /* Alinea el chat a la derecha */
     align-items: flex-end; /* Alinea el chat abajo */
   }
 
   .chat-container {
-    background-color: white;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    margin: 20px; /* Espacio entre el chat y los bordes de la ventana */
+    width: 100%;
+    height: 100%;
+    margin: 20px; 
+    display: flex;
+    flex-direction: column;
   }
 
   .chat {
     padding: 20px;
-    max-height: 300px;
+    max-height: 490px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -98,11 +98,16 @@
 
   .bot-message {
     background-color: $secondary-color;
-    color: white;
+    color: rgba(30, 30, 30,.8);
     align-self: flex-start;
   }
 
   .input-container {
+    position: absolute;
+    top:80%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    width: 80%;
     display: flex;
     align-items: center;
     padding: 20px;
