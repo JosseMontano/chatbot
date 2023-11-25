@@ -1,5 +1,7 @@
 <script lang="ts">
+  import Call from "./icons/call.svelte";
   import { fetchData } from "./utilities/fetch";
+  import ChatbotPng from "./assets/chatBot.png";
 
   let msgInput = "";
   let mensajes = [];
@@ -21,7 +23,6 @@
       mensajes = [...mensajes, addMsgBot];
       msgInput = "";
 
-
       return;
     }
   };
@@ -29,6 +30,13 @@
 
 <main>
   <div class="chat-container">
+    <div class="header">
+      <div class="container_title">
+        <img src={ChatbotPng} alt="chatbot" />
+        <h3>ChatComidas</h3>
+      </div>
+      <Call />
+    </div>
 
     <div class="chat">
       {#each mensajes as msg}
@@ -67,12 +75,39 @@
     align-items: flex-end; /* Alinea el chat abajo */
   }
 
+  .header {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+
+    .container_title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      color:#fff;
+    }
+    img {
+      width: 55px;
+      height: 55px;
+    }
+  }
+
   .chat-container {
     width: 100%;
     height: 100%;
-    margin: 20px; 
+    margin: 20px;
     display: flex;
     flex-direction: column;
+    margin-top: 70px;
   }
 
   .chat {
@@ -98,15 +133,15 @@
 
   .bot-message {
     background-color: $secondary-color;
-    color: rgba(30, 30, 30,.8);
+    color: rgba(30, 30, 30, 0.8);
     align-self: flex-start;
   }
 
   .input-container {
     position: absolute;
-    top:80%;
+    top: 80%;
     left: 50%;
-    transform: translate(-50%,50%);
+    transform: translate(-50%, 50%);
     width: 80%;
     display: flex;
     align-items: center;
