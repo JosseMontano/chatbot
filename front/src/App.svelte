@@ -1,10 +1,16 @@
 <script lang="ts">
   import Call from "./icons/call.svelte";
   import { fetchData } from "./utilities/fetch";
-  import ChatbotPng from "./assets/chatBot.png";
+  import ChatbotImg from "./assets/chatBot.png";
+  import ProfileImg from "./assets/profile1.jpg";
+
+  interface MsgType {
+    type: string;
+    msg: string;
+  }
 
   let msgInput = "";
-  let mensajes = [];
+  let mensajes: MsgType[] = [];
 
   const addMessage = async () => {
     const res = await fetchData("chat/" + msgInput);
@@ -32,7 +38,7 @@
   <div class="chat-container">
     <div class="header">
       <div class="container_title">
-        <img src={ChatbotPng} alt="chatbot" />
+        <img src={ChatbotImg} alt="chatbot" />
         <h3>ChatComidas</h3>
       </div>
       <Call />
@@ -40,7 +46,15 @@
 
     <div class="chat">
       {#each mensajes as msg}
-        <div class={`message ${msg.type}`}>{msg.msg}</div>
+        <div class={`message ${msg.type}`}>
+          <!--      {#if msg.type == "user-message"}
+            <img class="imgUser" src={ProfileImg} alt="chatbot" />
+          {/if} -->
+
+          <p>
+            {msg.msg}
+          </p>
+        </div>
       {/each}
     </div>
 
@@ -93,7 +107,7 @@
       align-items: center;
       justify-content: flex-start;
       gap: 10px;
-      color:#fff;
+      color: #fff;
     }
     img {
       width: 55px;
@@ -116,6 +130,18 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+
+    .message {
+      position: relative;
+    }
+    .imgUser {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: -25%;
+      left: 85%;
+      border-radius: 50%;
+    }
   }
 
   .message {
